@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "supportbee"
   gem.require_paths = ["lib"]
   gem.version       = Supportbee::VERSION
+
+  gem.add_dependency "httparty"
 end
