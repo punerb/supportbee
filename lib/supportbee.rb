@@ -5,9 +5,8 @@ module Supportbee
   class Base
     include HTTParty
 
-    base_uri "https://josh.supportbee.com"
-
     def initialize(auth_token)
+      self.class.base_uri "https://#{company}.supportbee.com"
       self.class.default_params :auth_token => auth_token
     end
 
