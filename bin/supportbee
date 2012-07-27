@@ -42,6 +42,11 @@ end
 # the options. What's left is the list of files to resize.
 optparse.parse
 
-cmd = ARGV.shift.strip rescue "--help"
+begin
+  cmd = ARGV.shift.strip
+rescue NoMethodError
+  puts optparse
+end
 
-Supportbee::Base.call(cmd, options)
+Supportbee::Base.call(cmd, options) if cmd
+
