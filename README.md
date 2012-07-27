@@ -5,7 +5,9 @@ The supportbee.com CLI gem
 =======
 # Supportbee
 
-TODO: Write a gem description
+Its command line interface for  - http://supportbee.com/
+
+Checkout API as here - http://developer.supportbee.com/
 
 ## Installation
 
