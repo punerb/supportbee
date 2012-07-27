@@ -1,5 +1,6 @@
 require "supportbee/version"
 require 'httparty'
+require 'json'
 
 module Supportbee
   class Base
@@ -19,8 +20,10 @@ module Supportbee
      self.class.default_params.merge!(options)
 
       response = self.class.get("/tickets.json")
-      response.body
+      result = JSON.parse(response.body)
+      result['tickets'].map do |ticket|
+        {ticket['id'] => ticket['subject']}
+      end
     end
   end
 end
-
