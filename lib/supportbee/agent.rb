@@ -1,5 +1,5 @@
 module Supportbee
-  class Agent
+  module Agent
 
   end
 end

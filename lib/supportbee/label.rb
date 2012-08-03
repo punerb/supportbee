@@ -1,5 +1,5 @@
 module Supportbee
-  class Label
+  module Label
 
   end
 end

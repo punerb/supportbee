@@ -1,5 +1,5 @@
  module Supportbee
-   class Ticket
+   module Ticket
      def tickets(options={})
        valid_keys = [:per_page, :page, :spam, :trash, :replies, :max_replies, :assigned_user, :assigned_group, :starred, :label, :since, :until]
        invalid_keys = options.keys - valid_keys
