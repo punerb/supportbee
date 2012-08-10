@@ -1,12 +1,15 @@
 require "supportbee/version"
+require "supportbee/auth"
 require 'httparty'
 require 'json'
 
 module Supportbee
   class Base
     include HTTParty
+    include Supportbee::Auth
 
-    def initialize(company, auth_token)
+    def initialize
+      company, auth_token = authenticate 
       self.class.base_uri "https://#{company}.supportbee.com"
       self.class.default_params :auth_token => auth_token
     end
