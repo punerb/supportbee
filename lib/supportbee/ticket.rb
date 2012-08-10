@@ -1,7 +1,7 @@
  module Supportbee
    module Ticket
      def tickets(options={})
-       valid_keys = [:per_page, :page, :spam, :trash, :replies, :max_replies, :assigned_user, :assigned_group, :starred, :label, :since, :until]
+       valid_keys = [:group, :per_page, :page, :spam, :trash, :replies, :max_replies, :assigned_user, :assigned_group, :starred, :label, :since, :until]
        invalid_keys = options.keys - valid_keys
 
        raise "Invalid Options: #{invalid_keys.join(', ')}" unless invalid_keys.empty?
