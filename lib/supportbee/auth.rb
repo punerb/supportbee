@@ -1,6 +1,6 @@
 module Supportbee 
   class Auth
-    def authenticate
+    def self.authenticate
       puts 'Please enter Company Name : '
 
       puts 'Please enter Authentication Token :'
