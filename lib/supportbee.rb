@@ -1,9 +1,8 @@
+
 require "supportbee/version"
 require "supportbee/auth"
 require "supportbee/api"
 require "supportbee/ticket"
-require 'httparty'
-require 'json'
 require 'supportbee/agent'
 require 'supportbee/label'
 

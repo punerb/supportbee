@@ -8,9 +8,9 @@
 #
 # and then 
 #
-# @api.get("/tickets") #=> should return json object of response
+# @api.get("/tickets", options) #=> should return json object of response
 # @api.post("/some_url")
-# @api.put("/url")
+# @api.put("/url", options)
 # @api.delete("/url")
 #
 
