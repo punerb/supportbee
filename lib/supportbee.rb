@@ -16,7 +16,7 @@ module Supportbee
     include Supportbee::Auth
 
     def initialize
-      company, auth_token = authenticate 
+      company, auth_token = Supportbee::Auth.authenticate 
       self.class.base_uri "https://#{company}.supportbee.com"
       self.class.default_params :auth_token => auth_token
     end
@@ -26,8 +26,8 @@ module Supportbee
      invalid_keys = options.keys - valid_keys
 
      raise "Invalid Options: #{invalid_keys.join(', ')}" unless invalid_keys.empty?
+    end
 
-    # 
     # this method will receive command line methods and 
     # options and will pass it on accordingly
     def self.call(cmd, options)
