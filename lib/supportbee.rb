@@ -1,4 +1,5 @@
 require "supportbee/version"
+require "supportbee/auth"
 require "supportbee/tickets"
 require 'httparty'
 require 'json'
@@ -12,14 +13,19 @@ module Supportbee
     include Supportbee::Ticket
     include Supportbee::Agent
     include Supportbee::Label
+    include Supportbee::Auth
 
-    # 
-    # TODO : this initialize to be shifted to api.rb
-    #
-    #def initialize(company, auth_token)
-    #  self.class.base_uri "https://#{company}.supportbee.com"
-    #  self.class.default_params :auth_token => auth_token
-    #end
+    def initialize
+      company, auth_token = authenticate 
+      self.class.base_uri "https://#{company}.supportbee.com"
+      self.class.default_params :auth_token => auth_token
+    end
+
+    def tickets(options={})
+     valid_keys = [:per_page, :page, :spam, :trash, :replies, :max_replies, :assigned_user, :assigned_group, :starred, :label, :since, :until]
+     invalid_keys = options.keys - valid_keys
+
+     raise "Invalid Options: #{invalid_keys.join(', ')}" unless invalid_keys.empty?
 
     # 
     # this method will receive command line methods and 
