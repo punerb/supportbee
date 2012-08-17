@@ -1,9 +1,8 @@
 require "supportbee/version"
 require "supportbee/auth"
-require "supportbee/tickets"
+require "supportbee/ticket"
 require 'httparty'
 require 'json'
-require 'supportbee/ticket'
 require 'supportbee/agent'
 require 'supportbee/label'
 
@@ -21,6 +20,9 @@ module Supportbee
       self.class.default_params :auth_token => auth_token
     end
 
+    # to be removed
+    # and shifted to tickets file.
+    ## TODO - refactor needed here...
     def tickets(options={})
      valid_keys = [:per_page, :page, :spam, :trash, :replies, :max_replies, :assigned_user, :assigned_group, :starred, :label, :since, :until]
      invalid_keys = options.keys - valid_keys
