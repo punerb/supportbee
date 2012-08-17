@@ -11,6 +11,7 @@
        response = self.class.get("/tickets.json")
        result = JSON.parse(response.body)
        result['tickets'].map do |ticket|
+         puts ticket
          {ticket['id'] => ticket['subject']}
        end
      end
