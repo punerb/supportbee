@@ -8,8 +8,7 @@
 
 
        response = @api.get("/tickets.json", options)
-       result = JSON.parse(response.body)
-       result['tickets'].map do |ticket|
+       response['tickets'].map do |ticket|
          puts ticket
          {ticket['id'] => ticket['subject']}
        end
