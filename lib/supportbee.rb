@@ -9,16 +9,11 @@ require 'supportbee/label'
 
 module Supportbee
   class Base
-    #include HTTParty
     include Supportbee::Ticket
     include Supportbee::Agent
     include Supportbee::Label
-    #include Supportbee::Auth
 
     def initialize
-      #company, auth_token = Supportbee::Auth.authenticate 
-      #self.class.base_uri "https://#{company}.supportbee.com"
-      #self.class.default_params :auth_token => auth_token
       @api = Supportbee::Api.new
     end
 
