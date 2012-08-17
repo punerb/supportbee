@@ -21,17 +21,20 @@ module Supportbee
   class Api
 	
     include HTTParty
+    include Supportbee::Auth
 
     def initialize
       # here it should read config file 
       # for auth values.
+      company, auth_token = Supportbee::Auth.authenticate 
       self.class.base_uri "https://#{company}.supportbee.com"
       self.class.default_params :auth_token => auth_token
     end
 
     # 
     # handles get in here..
-    def get(url)
+    def get(url, options = {})
+      self.class.default_params.merge!(options)
       self.class.get(url)
     end
 

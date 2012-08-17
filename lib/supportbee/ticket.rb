@@ -6,9 +6,8 @@
 
        raise "Invalid Options: #{invalid_keys.join(', ')}" unless invalid_keys.empty?
 
-       self.class.default_params.merge!(options)
 
-       response = self.class.get("/tickets.json")
+       response = @api.get("/tickets.json", options)
        result = JSON.parse(response.body)
        result['tickets'].map do |ticket|
          puts ticket
