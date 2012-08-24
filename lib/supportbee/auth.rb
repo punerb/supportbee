@@ -1,7 +1,7 @@
 module Supportbee 
   module Auth
     def self.authenticate
-      if File.exists?(File.expand_path('~/.supportbee'))
+      if File.exists?(File.expand_path('~/.supportbee/credentials'))
         company_name, token = '', ''
         f = File.open(File.expand_path('~/.supportbee/credentials'), 'r') do |i|
           lines = i.readlines
