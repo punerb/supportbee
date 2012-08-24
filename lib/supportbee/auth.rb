@@ -14,12 +14,12 @@ module Supportbee
        [ company_name, token]
       else
         p 'Please enter Company Name : '
-        company_name = gets
+        company_name = gets.chop
         p 'Please enter Authentication Token :'
-        token = gets.chomp
+        token = gets.chop
         puts %x[mkdir ~/.supportbee] if !File.exists?(File.expand_path('~/.supportbee'))
         f = File.new(File.expand_path("~/.supportbee/credentials"), 'w')
-        f.write("company: #{company_name}")
+        f.write("company:#{company_name}")
         f.write("token:#{token}")
        [ company_name, token]
       end
