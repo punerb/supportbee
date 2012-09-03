@@ -1,3 +1,5 @@
+require 'hirb'
+
  module Supportbee
    module Ticket
      def tickets(options={})
@@ -8,10 +10,12 @@
 
 
        response = @api.get("/tickets.json", options)
-       response['tickets'].map do |ticket|
-         puts ticket
-         {ticket['id'] => ticket['subject']}
+       output = []
+       response['tickets'].each do |ticket|
+         output << {'id' => ticket['id'], 'Assigned To' => ticket['current_assignee']['name'], 
+                    'Requester' => ticket['requester']['name'], 'subject' => ticket['subject']}
        end
+       puts Hirb::Helpers::AutoTable.render(output)
      end
    end
  end
