@@ -49,4 +49,3 @@ rescue NoMethodError
 end
 
 Supportbee::Base.call(cmd, options) if cmd and !cmd.include?('-')
-
