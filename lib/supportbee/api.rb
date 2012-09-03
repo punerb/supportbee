@@ -29,7 +29,6 @@ module Supportbee
       company, auth_token = Supportbee::Auth.authenticate 
       self.class.base_uri "https://#{company}.supportbee.com"
       self.class.default_params :auth_token => auth_token
-      p self.class.base_uri
     end
 
     # 
