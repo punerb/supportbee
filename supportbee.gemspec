@@ -2,8 +2,8 @@
 require File.expand_path('../lib/supportbee/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Sandip Ransing"]
-  gem.email         = ["sandip@joshsoftware.com"]
+  gem.authors       = ["Sandip Ransing", 'Siva Gollapalli']
+  gem.email         = ["sandip@joshsoftware.com", 'siva@joshsoftware.com']
   gem.description   = %q{CLI for supportbee API}
   gem.summary       = %q{Gem will allow you to fetch tickets based on organization and assigned user, etc..}
   gem.homepage      = "http://github.com/punerb/supportbee"
