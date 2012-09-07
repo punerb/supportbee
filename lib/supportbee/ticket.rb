@@ -8,6 +8,10 @@ module Supportbee
 
       raise "Invalid Options: #{invalid_keys.join(', ')}" unless invalid_keys.empty?
 
+      if options[:assigned_group] and options[:assigned_user]
+        p "You can list tickets either agent wise or group wise" 
+        return
+      end
       response = @api.get(build_url(options))
       output = []
       response['tickets'].each do |ticket|
@@ -20,9 +24,17 @@ module Supportbee
     def build_url(options={})
       url = "/tickets.json"
 
-      # fetch group ID of a particular project
-      group_id = group(options[:assigned_group])
-      url = "#{url}?assigned_group=#{group_id}" if options[:assigned_group]
+      if options[:assigned_group]
+        # fetch group ID of a particular project
+        group_id = group(options[:assigned_group])
+        url = "#{url}?assigned_group=#{group_id}"
+      end
+
+      if options[:assigned_user]
+        # fetch agent ID 
+        agent_id = agent(options[:assigned_user])
+        url = "#{url}?assigned_user=#{agent_id}" 
+      end
     end
   end
 end
