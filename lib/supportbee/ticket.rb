@@ -14,9 +14,10 @@ module Supportbee
       end
       response = @api.get(build_url(options))
       output = []
+      
       response['tickets'].each do |ticket|
-        output << {'id' => ticket['id'], 'Assigned To' => ticket['current_assignee']['name'], 
-          'Requester' => ticket['requester']['name'], 'subject' => ticket['subject']}
+        current_assignee_name = ticket['current_assignee'] ? ticket['current_assignee']['name'] : ""
+        output << {'id' => ticket['id'], 'Assigned To' => current_assignee_name,  'subject' => ticket['subject']} 
       end
       puts Hirb::Helpers::AutoTable.render(output)
     end
@@ -35,6 +36,7 @@ module Supportbee
         agent_id = agent(options[:assigned_user])
         url = "#{url}?assigned_user=#{agent_id}" 
       end
+      url
     end
   end
 end

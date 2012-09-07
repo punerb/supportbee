@@ -19,7 +19,7 @@ module Supportbee
         token = gets.chop
         puts %x[mkdir ~/.supportbee] if !File.exists?(File.expand_path('~/.supportbee'))
         f = File.new(File.expand_path("~/.supportbee/credentials"), 'w')
-        f.write("company:#{company_name}")
+        f.write("company:#{company_name}\n")
         f.write("token:#{token}")
        [ company_name, token]
       end
