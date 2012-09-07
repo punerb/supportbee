@@ -38,7 +38,7 @@ optparse = OptionParser.new do|opts|
    options[:assigned_group] = group 
  end
 
- opts.on( '-u', '--user USER', 'Display tickets for a particular user') do |user|
+ opts.on( '-a', '--agent USER', 'Display tickets for a particular user') do |user|
    options[:assigned_user] = user
  end
 end
