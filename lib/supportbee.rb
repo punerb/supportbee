@@ -5,12 +5,14 @@ require "supportbee/api"
 require "supportbee/ticket"
 require 'supportbee/agent'
 require 'supportbee/label'
+require 'supportbee/group'
 
 module Supportbee
   class Base
     include Supportbee::Ticket
     include Supportbee::Agent
     include Supportbee::Label
+    include Supportbee::Group
 
     def initialize
       @api = Supportbee::Api.new
@@ -24,6 +26,5 @@ module Supportbee
       options.delete(:logfile)
       self.new.send(cmd, options)
     end
-    
   end
 end

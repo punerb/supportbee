@@ -33,6 +33,14 @@ optparse = OptionParser.new do|opts|
    puts opts
    exit
  end
+
+ opts.on( '-g', '--group GROUP', 'Display tickets for a particular group') do |group| 
+   options[:assigned_group] = group 
+ end
+
+ opts.on( '-u', '--user USER', 'Display tickets for a particular user') do |user|
+   options[:assigned_user] = user
+ end
 end
 
 # Parse the command-line. Remember there are two forms
